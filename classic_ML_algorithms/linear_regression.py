@@ -50,7 +50,7 @@ class LinearRegression:
 
                 
 model = LinearRegression()
-dataframe = pd.read_csv("/Users/user/Documents/gitHubRepos/ML-Algorithms/datasets/single_feature_linearRegression/train.csv")
+dataframe = pd.read_csv("./ML-Algorithms/datasets/single_feature_linearRegression/train.csv")
 X = dataframe["x"].values
 Y = dataframe["y"].values
 print(X.shape, Y.shape)
@@ -78,7 +78,7 @@ wandb.init(
 model.fit(X, Y, epochs=epochs, batch_size=batch_size, lr=lr)
 print(f"Trained weights: {model.weights}, bias: {model.bias}")
 
-dataframe = pd.read_csv("/Users/user/Documents/gitHubRepos/ML-Algorithms/datasets/single_feature_linearRegression/test.csv")
+dataframe = pd.read_csv("./ML-Algorithms/datasets/single_feature_linearRegression/test.csv")
 X_t = dataframe["x"].values
 Y_t = dataframe["y"].values
 # print(X.shape, Y.shape)
