@@ -1,0 +1,39 @@
+_wandb:
+    value:
+        cli_version: 0.24.0
+        e:
+            esf598u0ddkuyipn4bzbt9fam1qo50sv:
+                codePath: classic_ML_algorithms/linear_regression.py
+                codePathLocal: classic_ML_algorithms/linear_regression.py
+                email: surajsamant1414@gmail.com
+                executable: /Users/user/envs/translate/bin/python
+                git:
+                    remote: git@github.com:learning-log/ML-Algorithms.git
+                host: usernoMacBook-Pro.local
+                os: macOS-26.2-arm64-arm-64bit
+                program: /Users/user/Documents/gitHubRepos/ML-Algorithms/classic_ML_algorithms/linear_regression.py
+                python: CPython 3.10.11
+                root: /Users/user/Documents/gitHubRepos/ML-Algorithms
+                startedAt: "2026-01-20T16:29:34.629624Z"
+                writerId: esf598u0ddkuyipn4bzbt9fam1qo50sv
+        m: []
+        python_version: 3.10.11
+        t:
+            "3":
+                - 16
+            "4": 3.10.11
+            "5": 0.24.0
+            "12": 0.24.0
+            "13": darwin-arm64
+batch_size:
+    value: 64
+epochs:
+    value: 100
+features:
+    value: 1
+learning_rate:
+    value: 0.01
+loss:
+    value: MSE
+optimizer:
+    value: SGD

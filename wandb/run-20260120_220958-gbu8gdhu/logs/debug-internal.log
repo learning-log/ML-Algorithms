@@ -1,0 +1,15 @@
+{"time":"2026-01-20T22:09:59.10509+05:30","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-01-20T22:09:59.524855+05:30","level":"INFO","msg":"stream: created new stream","id":"gbu8gdhu"}
+{"time":"2026-01-20T22:09:59.525297+05:30","level":"INFO","msg":"stream: started","id":"gbu8gdhu"}
+{"time":"2026-01-20T22:09:59.525354+05:30","level":"INFO","msg":"sender: started","stream_id":"gbu8gdhu"}
+{"time":"2026-01-20T22:09:59.525367+05:30","level":"INFO","msg":"handler: started","stream_id":"gbu8gdhu"}
+{"time":"2026-01-20T22:09:59.525382+05:30","level":"INFO","msg":"writer: started","stream_id":"gbu8gdhu"}
+{"time":"2026-01-20T22:10:00.584701+05:30","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":8090}
+{"time":"2026-01-20T22:10:00.585499+05:30","level":"ERROR","msg":"flowcontrol: failed reading after 0 records: transactionlog: bad header: leveldb/record: reader not in first block","chunk":{"InitialOffset":1001190,"InitialNumber":8090,"Count":45}}
+{"time":"2026-01-20T22:10:00.586204+05:30","level":"ERROR","msg":"flowcontrol: failed reading after 0 records: transactionlog: bad header: leveldb/record: reader not in first block","chunk":{"InitialOffset":1006846,"InitialNumber":8135,"Count":20}}
+{"time":"2026-01-20T22:10:00.586226+05:30","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":65}
+{"time":"2026-01-20T22:10:03.056511+05:30","level":"INFO","msg":"stream: closing","id":"gbu8gdhu"}
+{"time":"2026-01-20T22:10:05.704359+05:30","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-20T22:10:09.637779+05:30","level":"INFO","msg":"handler: closed","stream_id":"gbu8gdhu"}
+{"time":"2026-01-20T22:10:09.638214+05:30","level":"INFO","msg":"sender: closed","stream_id":"gbu8gdhu"}
+{"time":"2026-01-20T22:10:09.638251+05:30","level":"INFO","msg":"stream: closed","id":"gbu8gdhu"}
