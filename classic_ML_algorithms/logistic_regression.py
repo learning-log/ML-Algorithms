@@ -3,9 +3,9 @@ import pandas as pd
 
 import wandb
 class LogisticRegression:
-    def __init__(self,infeatures=1):
-        self.weights = np.zeros((infeatures,1))
-        self.bias = 0.0
+    def __init__(self,infeatures=1,outfeatures=1):
+        self.weights = np.zeros((infeatures,outfeatures)) #wieght initialization (infeatures,outfeatures)
+        self.bias = np.zeros((1,outfeatures))  #bias initialization (outfeatures,)
     def sigmoid(self, z):
         return 1 / (1 + np.exp(-z))
     def predict(self, X):
@@ -18,25 +18,21 @@ class LogisticRegression:
         """Fit the logistic regression model to the training data."""
         """
         X: numpy array of shape (n_samples, 1)
-        y: numpy array of shape(n_samples,)
+        y: numpy array of shape(n_samples,1)
         """
         n_samples = X.shape[0]
-        # self.weights = np.zeros(n_features)
-        # self.bias = 0
-        # n_batches = int(n_samples / batch_size)
-        # print(f"weights initial: {self.weights}")
+        
         for e in range(epochs):
             completed_batches = 0
             for start in range(0, n_samples, batch_size):
                 completed_batches += 1
                 end = start + batch_size
-                # X[:, i] = (X[:, i] - np.mean(X[:, i])) / np.std(X[:, i])
+
                 curr_batch_size = min(batch_size, n_samples - start)
                 input_batch = X[start:end]
                 target_batch = y[start:end]
                 y_predicted = self.predict(input_batch)
-                # print(f"y_predicted: {y_predicted}")
-                # print(f"target_batch: {target_batch}")
+            
                 loss = self.loss(target_batch, y_predicted)
                 wandb.log({
                     "epoch": e + 1,
@@ -48,9 +44,9 @@ class LogisticRegression:
                 print(f"Epoch {e+1}/{epochs}, Batch {completed_batches+1}, Loss: {loss:.4f}")
                 dw = (1/curr_batch_size) * (input_batch.T @ (y_predicted - target_batch))
                 db = (1/curr_batch_size) * np.sum(y_predicted - target_batch)
-                # print(f"dw: {dw}, db: {db}")
+          
                 self.weights -= lr * dw
-                # print(f"weights: {self.weights}")
+                
                 self.bias -= lr * db
 
 

@@ -5,7 +5,7 @@ import wandb
 class LinearRegression:
     def __init__(self,infeatures=1):
         self.weights = np.zeros((infeatures,1))
-        self.bias = 0.0
+        self.bias = np.zeros((1,1))
     def predict(self, X):
         return X @ self.weights + self.bias
     def loss(self, y_true, y_pred):
@@ -21,6 +21,7 @@ class LinearRegression:
         # self.bias = 0
         # n_batches = int(n_samples / batch_size)
         # print(f"weights initial: {self.weights}")
+        lambda_reg = 0.01  # Regularization strength
         for e in range(epochs):
             completed_batches = 0
             for start in range(0, n_samples, batch_size):
@@ -42,7 +43,7 @@ class LinearRegression:
                 })
                 print(f"Epoch {e+1}/{epochs}, Batch {completed_batches+1}, Loss: {loss:.4f}")
                 dw = (2/batch_size) * (input_batch.T @ (y_predicted - target_batch))
-                db = (2/batch_size) * np.sum(y_predicted - target_batch)
+                db = (2/batch_size) * np.sum(y_predicted - target_batch) 
                 # print(f"dw: {dw}, db: {db}")
                 self.weights -= lr * dw
                 # print(f"weights: {self.weights}")
@@ -50,7 +51,7 @@ class LinearRegression:
 
                 
 model = LinearRegression()
-dataframe = pd.read_csv("./ML-Algorithms/datasets/single_feature_linearRegression/train.csv")
+dataframe = pd.read_csv("./datasets/single_feature_linearRegression/train.csv")
 X = dataframe["x"].values
 Y = dataframe["y"].values
 print(X.shape, Y.shape)
@@ -60,9 +61,9 @@ X_mean = np.mean(X, axis=0)
 X_std = np.std(X, axis=0)
 X = (X - X_mean) / X_std
 
-epochs = 1000
+epochs = 100
 batch_size =32
-lr = 0.001
+lr = 0.01
 wandb.init(
     project="linear-regression-numpy",
     config={
@@ -78,7 +79,7 @@ wandb.init(
 model.fit(X, Y, epochs=epochs, batch_size=batch_size, lr=lr)
 print(f"Trained weights: {model.weights}, bias: {model.bias}")
 
-dataframe = pd.read_csv("./ML-Algorithms/datasets/single_feature_linearRegression/test.csv")
+dataframe = pd.read_csv("./datasets/single_feature_linearRegression/test.csv")
 X_t = dataframe["x"].values
 Y_t = dataframe["y"].values
 # print(X.shape, Y.shape)
